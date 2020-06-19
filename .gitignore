@@ -1,0 +1,33 @@
+# direnv
+**/.envrc
+
+# OS specific
+**/.DS_Store
+
+# vagrant
+/.vagrant
+/.tmp
+
+# editor and ide specific
+**/.dir-locals.el
+.idea
+.vscode
+jsconfig.json
+typings
+
+# misc
+**/.env*
+**/.pnp*
+
+# App artifacts
+/_build/
+/deps/
+/*.ez
+**/.mix
+**/.hex
+
+# Generated on crash by the VM
+**/erl_crash.dump
+
+# Elixir Language Server
+/.elixir_ls/
