@@ -7,7 +7,18 @@ defmodule TallariumCredo.Mixfile do
       version: "0.0.0",
       elixir: "~> 1.10.1",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
+    ]
+  end
+
+  defp aliases do
+    [
+      ci: [
+        "format --check-formatted",
+        "credo --strict",
+        "compile --warnings-as-errors"
+      ]
     ]
   end
 
