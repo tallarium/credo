@@ -32,6 +32,7 @@ defmodule TallariumCredo.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:credo, "~> 1.4.0", only: [:dev, :test]},
       {:destructure, "~> 0.2.3"}
     ]
