@@ -34,7 +34,7 @@ defmodule TallariumCredo.Mixfile do
     [
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:credo, "~> 1.4.0", only: [:dev, :test]},
-      {:destructure, "~> 0.2.3"}
+      {:destructure, "~> 0.2"}
     ]
   end
 end
