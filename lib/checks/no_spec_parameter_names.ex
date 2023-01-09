@@ -21,11 +21,9 @@ defmodule TallariumCredo.Checks.NoSpecParameterNames do
   defp traverse({:spec, meta, [{_, _, [{_, _, args} | _]}]} = ast, state, issue_meta)
        when is_list(args) do
     # catch e.g. (a :: integer), where the operator is "::"
-    named_parameters = Enum.filter(args, &match?({:"::", _, _}, &1))
+    parameter_names = for {:"::", _, [{name, _, _}, _]} <- args, do: name
 
-    if named_parameters != [] do
-      parameter_names = Enum.map(named_parameters, fn {:"::", _, [{name, _, _}, _]} -> name end)
-
+    if parameter_names != [] do
       issues = [
         issue_for(issue_meta, meta[:line], Enum.join(parameter_names, ", ")) | state.issues
       ]
