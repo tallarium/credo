@@ -4,7 +4,7 @@ defmodule TallariumCredo.Mixfile do
   def project do
     [
       app: :tallarium_credo,
-      version: "0.0.4",
+      version: "0.0.5",
       elixir: ">= 1.10.1",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
