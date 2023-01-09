@@ -9,13 +9,16 @@ defmodule TallariumCredo.Checks.NoSpecParameterNames do
 
   def run(source_file, params \\ []) do
     issue_meta = IssueMeta.for(source_file, params)
-    initial_state = d(%{issue_meta, issues: []})
 
-    d(%{issues}) = Credo.Code.prewalk(source_file, &traverse/2, initial_state)
+    d(%{issues}) =
+      Credo.Code.prewalk(source_file, fn ast, state -> traverse(ast, state, issue_meta) end, %{
+        issues: []
+      })
+
     issues
   end
 
-  defp traverse({:spec, meta, [{_, _, [{_, _, args} | _]}]} = ast, d(%{issue_meta}) = state)
+  defp traverse({:spec, meta, [{_, _, [{_, _, args} | _]}]} = ast, state, issue_meta)
        when is_list(args) do
     # catch e.g. (a :: integer), where the operator is "::"
     named_parameters = Enum.filter(args, &match?({:"::", _, _}, &1))
@@ -33,7 +36,7 @@ defmodule TallariumCredo.Checks.NoSpecParameterNames do
     end
   end
 
-  defp traverse(ast, state) do
+  defp traverse(ast, state, _issue_meta) do
     {ast, state}
   end
 
