@@ -4,6 +4,7 @@ defmodule TallariumCredo.Mixfile do
   def project do
     [
       app: :tallarium_credo,
+      package: package(),
       version: "0.0.8",
       elixir: ">= 1.10.1",
       start_permanent: Mix.env() == :prod,
@@ -36,6 +37,16 @@ defmodule TallariumCredo.Mixfile do
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:credo, ">= 1.5.1"},
       {:destructure, "~> 0.2"}
+    ]
+  end
+
+  def package do
+    [
+      name: "tallarium_credo",
+      description: "Custom Elixir rules used at Tallarium",
+      maintainers: ["Tallarium Developers"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/tallarium/credo"}
     ]
   end
 end
