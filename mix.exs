@@ -34,7 +34,7 @@ defmodule TallariumCredo.Mixfile do
     [
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      {:credo, ">= 1.5.1", only: [:dev, :test]},
+      {:credo, ">= 1.5.1"},
       {:destructure, "~> 0.2"}
     ]
   end
