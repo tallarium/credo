@@ -3,16 +3,21 @@ defmodule TallariumCredo.Checks.NoRuntimeAccess do
   Disallows runtime access to the specified modules.
   """
 
-  use Credo.Check, base_priority: :high, category: :warning
+  use Credo.Check,
+    base_priority: :high,
+    category: :warning,
+    explanations: [
+      check: """
+      Disallows runtime access to the specified modules. This is useful for
+      ensuring that modules are only accessed at compile time, for example to
+      access module attributes.
+      """,
+      params: [
+        modules: "Modules to disallow access to."
+      ]
+    ]
 
   import Destructure
-
-  @explanation [
-    check: @moduledoc,
-    params: [
-      modules: "Modules to disallow access to."
-    ]
-  ]
 
   @default_params [
     modules: []

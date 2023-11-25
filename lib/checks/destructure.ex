@@ -3,7 +3,14 @@ defmodule TallariumCredo.Checks.Destructure do
   Encourages the use of Destructure
   """
 
-  use Credo.Check, base_priority: :high, category: :warning
+  use Credo.Check,
+    base_priority: :normal,
+    category: :consistency,
+    explanations: [
+      check: """
+      Use Destructure and the d(%{}) macro to destructure maps.
+      """
+    ]
 
   import Destructure
 
