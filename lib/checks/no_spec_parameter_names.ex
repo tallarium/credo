@@ -3,7 +3,14 @@ defmodule TallariumCredo.Checks.NoSpecParameterNames do
   Disallows the use of parameter names in the spec.
   """
 
-  use Credo.Check, base_priority: :high, category: :refactoring
+  use Credo.Check,
+    base_priority: :high,
+    category: :refactoring,
+    explanations: [
+      check: """
+      The spec should only contain types, not parameter names.
+      """
+    ]
 
   import Destructure
 

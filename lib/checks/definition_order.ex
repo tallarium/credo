@@ -3,7 +3,15 @@ defmodule TallariumCredo.Checks.DefinitionOrder do
   Check that functions are generally ordered in a top-down fashion
   """
 
-  use Credo.Check, base_priority: :high, category: :consistency
+  use Credo.Check,
+    base_priority: :high,
+    category: :refactor,
+    explanations: [
+      check: """
+      Functions should be ordered in a top-down fashion, so that the file reads
+      from top to bottom.
+      """
+    ]
 
   import Destructure
   alias Credo.Code.Module

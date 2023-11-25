@@ -3,7 +3,15 @@ defmodule TallariumCredo.Checks.EctoOnlyMacroSyntax do
   Permit only the use of the macro syntax from the Ecto.Query module
   """
 
-  use Credo.Check, base_priority: :high, category: :warning
+  use Credo.Check,
+    base_priority: :high,
+    category: :consistency,
+    explanations: [
+      check: """
+      Ecto.Query provides two syntaxes for building queries: the macro syntax and
+      the keyword syntax. The macro syntax is preferred as it is more flexible.
+      """
+    ]
 
   import Destructure
 
